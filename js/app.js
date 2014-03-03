@@ -1,5 +1,9 @@
 App = Ember.Application.create();
 
+Ember.Handlebars.helper('format-date', function( date ) {
+  return moment( date ).fromNow();
+});
+
 App.Message = Ember.Object.extend({
   id: 3,
   firstName: 'Ajay',
@@ -29,9 +33,9 @@ App.IndexRoute = Ember.Route.extend({
         timeStamp: Date.now() - 300000,
       }
     ];
-  }
+  },
   actions: {
-    sendMessage: function( message ) {
+    sendMessage: function ( message ) {
       var user, messages, newMessage;
 
       if ( message !== '' ) {
@@ -54,13 +58,13 @@ App.GroupChatComponent = Ember.Component.extend({
       var message = this.get( 'message' ).trim(),
           conversation = this.$( 'ul' )[ 0 ];
 
-      // Fetches the value of 'action'
+      // Fetchs the value of 'action'
       // and sends the action with the message
       this.sendAction( 'action', message );
 
       // When the Ember run loop is done
       // scroll to the bottom
-      Ember.run.schedule( 'afterRender', function () {
+      Ember.run.schedule('afterRender', function () {
         conversation.scrollTop = conversation.scrollHeight;
       });
 
