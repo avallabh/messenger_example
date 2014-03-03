@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/tooltipster.css">
 </head>
-
 <body>
+
   <script type="text/x-handlebars" data-template-name="application">
     {{outlet}}
   </script>
@@ -26,25 +26,26 @@
       </ul>
       <form class="new-message" {{action submit on="submit"}}>
         {{input type="text" placeholder="Send new message" value=message class="txt-field"}}
+
         {{input type="submit" class="send-btn" value="Send"}}
       </form>
     </div>
   </script>
 
   <script type="text/x-handlebars" data-template-name="components/chat-message">
-    <div class="message media">
-      <div class="img">
-        {{user-avatar username=username service="twitter"}}
-      </div>
-      <div class="bd">
-        {{user-message message=message}}
-        {{time-stamp time=time}}
-      </div>
+  <div class="message media">
+    <div class="img">
+      {{user-avatar username=username service="twitter"}}
     </div>
+    <div class="bd">
+      {{user-message message=message}}
+      {{time-stamp time=time}}
+    </div>
+  </div>
   </script>
 
   <script type="text/x-handlebars" data-template-name="components/user-avatar">
-    <img {{bind-attr src=avatarUrl alt=username}} class="avatar">
+    <img {{bind-attr src=avatarUrl alt=username title=username}} class="avatar">
   </script>
 
   <script type="text/x-handlebars" data-template-name="components/user-message">
@@ -64,5 +65,6 @@
   <script src="js/libs/moment.js"></script>
   <script src="js/libs/jquery.tooltipster.min.js"></script>
   <script src="js/app.js"></script>
+
 </body>
 </html>
